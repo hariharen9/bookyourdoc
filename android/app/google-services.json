@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "615628251689",
+    "project_id": "bookyourdoc-9",
+    "storage_bucket": "bookyourdoc-9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615628251689:android:57bc0808070f5f47583238",
+        "android_client_info": {
+          "package_name": "com.hariharen.bookyourdoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "615628251689-ukcdvgfcdjgmls45u7ae6tn7oavtrbua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhExOeCnpzZoPv3Dsf_VIatv8kGAx9bek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "615628251689-ukcdvgfcdjgmls45u7ae6tn7oavtrbua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
