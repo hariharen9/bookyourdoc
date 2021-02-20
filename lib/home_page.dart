@@ -6,20 +6,18 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
-    return ElevatedButton(
-      onPressed: () {
-        context.read<AuthenticationService>().signOut();
-      },
-      child: Text("Sign OUT"),
-    );
+    return Container();
   }
 }
 
 //signout button
 /*
-
+ElevatedButton(
+      onPressed: () {
+        context.read<AuthenticationService>().signOut();
+      },
+      child: Text("Sign OUT"),
+    );
 
               
 */
