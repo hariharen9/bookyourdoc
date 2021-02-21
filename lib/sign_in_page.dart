@@ -58,6 +58,7 @@ class _SignInPageState extends State<SignInPage> {
                   'BookYourDoc',
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                    color: Colors.blueGrey[600],
                     fontSize: 32,
                     fontWeight: FontWeight.w900,
                   ),

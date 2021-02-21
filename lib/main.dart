@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'constants.dart';
+import 'crud.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

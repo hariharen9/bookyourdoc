@@ -6,12 +6,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:core';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatefulWidget {
+class Crud extends StatefulWidget {
+  Crud({Key key}) : super(key: key);
+
   @override
-  _HomePageState createState() => _HomePageState();
+  _CrudState createState() => _CrudState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _CrudState extends State<Crud> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   Map data;
   void _create() async {
@@ -76,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                   height: 50,
                 ),
                 Text(
-                  'HOME',
+                  'CRUD operations',
                   style: TextStyle(color: Colors.white, fontSize: 30),
                 ),
                 SizedBox(
@@ -122,7 +124,6 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 }
-
 //signout button
 /*
 ElevatedButton(
