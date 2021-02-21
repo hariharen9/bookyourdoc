@@ -36,15 +36,19 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlueAccent[400],
-        title: Text('BookYourDoc', textAlign: TextAlign.center),
+        backgroundColor: Colors.white70,
+        title: Text(
+          'BookYourDoc',
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.black54),
+        ),
       ),
       body: SafeArea(
         child: Container(
           constraints: BoxConstraints.expand(),
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/8727.jpg'),
+                  image: AssetImage('assets/images/white.jpg'),
                   fit: BoxFit.cover)),
           // child: BackdropFilter(
           //   filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
@@ -77,10 +81,10 @@ class _SignInPageState extends State<SignInPage> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                      color: Color(0x993cc7a9),
+                      color: Color(0x99eeeeee),
                       border: Border.all(color: Colors.blue)),
                   child: TextField(
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black87),
                     controller: emailController,
                     decoration: InputDecoration(
                       hintText: "Enter your Email",
@@ -100,10 +104,10 @@ class _SignInPageState extends State<SignInPage> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                      color: Color(0x993cc7a9),
+                      color: Color(0x99eeeeee),
                       border: Border.all(color: Colors.blue)),
                   child: TextField(
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black87),
                     controller: passwordController,
                     decoration: InputDecoration(
                       hintText: "Enter your Password",
@@ -140,7 +144,7 @@ class _SignInPageState extends State<SignInPage> {
                   height: 55,
                 ),
                 Text(
-                  "If you are new to Book-your-Doc, Please \nSIGN UP first.",
+                  "If you are new to BookYourDoc, Please \nSIGN UP first.",
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 18,
@@ -153,10 +157,10 @@ class _SignInPageState extends State<SignInPage> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                      color: Color(0x993cc7a9),
+                      color: Color(0x99eeeeee),
                       border: Border.all(color: Colors.blue)),
                   child: TextField(
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black87),
                     controller: newemailController,
                     decoration: InputDecoration(
                       hintText: "Enter your Email",
@@ -176,10 +180,10 @@ class _SignInPageState extends State<SignInPage> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                      color: Color(0x993cc7a9),
+                      color: Color(0x99eeeeee),
                       border: Border.all(color: Colors.blue)),
                   child: TextField(
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black87),
                     controller: newpasswordController,
                     decoration: InputDecoration(
                       hintText: "Enter your Password",
