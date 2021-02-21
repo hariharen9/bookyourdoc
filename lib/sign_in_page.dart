@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:bookyourdoc/authentication_service.dart';
@@ -36,7 +37,7 @@ class _SignInPageState extends State<SignInPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlueAccent[400],
-        title: Text('BookYourDoc'),
+        title: Text('BookYourDoc', textAlign: TextAlign.center),
       ),
       body: SafeArea(
         child: Container(
@@ -54,26 +55,69 @@ class _SignInPageState extends State<SignInPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'WELCOME TO \n BOOK-YOUR-DOC!',
+                  'BookYourDoc',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 32,
                     fontWeight: FontWeight.w900,
                   ),
                 ),
-                TextField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                    hintText: "Enter your Email",
-                    labelText: "Email",
+                Text(
+                  'Enter your email and password below to continue to the BookYourDoc App',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
-                TextField(
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    hintText: "Enter your Password",
-                    labelText: "Password",
+                SizedBox(
+                  height: 15,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                      color: Color(0x993cc7a9),
+                      border: Border.all(color: Colors.blue)),
+                  child: TextField(
+                    style: TextStyle(color: Colors.white),
+                    controller: emailController,
+                    decoration: InputDecoration(
+                      hintText: "Enter your Email",
+                      labelText: "Email",
+                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                      border: InputBorder.none,
+                      icon: Icon(
+                        Icons.lock,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                      color: Color(0x993cc7a9),
+                      border: Border.all(color: Colors.blue)),
+                  child: TextField(
+                    style: TextStyle(color: Colors.white),
+                    controller: passwordController,
+                    decoration: InputDecoration(
+                      hintText: "Enter your Password",
+                      labelText: "Password",
+                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                      border: InputBorder.none,
+                      icon: Icon(
+                        Icons.lock,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 RaisedButton(
                   color: Colors.lightBlueAccent,
@@ -92,7 +136,7 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 75,
+                  height: 55,
                 ),
                 Text(
                   "If you are new to Book-your-Doc, Please \nSIGN UP first.",
@@ -102,19 +146,54 @@ class _SignInPageState extends State<SignInPage> {
                     fontWeight: FontWeight.w900,
                   ),
                 ),
-                TextField(
-                  controller: newemailController,
-                  decoration: InputDecoration(
-                    hintText: "Enter your Email",
-                    labelText: "Email",
+                SizedBox(
+                  height: 15,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                      color: Color(0x993cc7a9),
+                      border: Border.all(color: Colors.blue)),
+                  child: TextField(
+                    style: TextStyle(color: Colors.white),
+                    controller: newemailController,
+                    decoration: InputDecoration(
+                      hintText: "Enter your Email",
+                      labelText: "Email",
+                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                      border: InputBorder.none,
+                      icon: Icon(
+                        Icons.lock,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                 ),
-                TextField(
-                  controller: newpasswordController,
-                  decoration: InputDecoration(
-                    hintText: "Enter your Password",
-                    labelText: "Password",
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                      color: Color(0x993cc7a9),
+                      border: Border.all(color: Colors.blue)),
+                  child: TextField(
+                    style: TextStyle(color: Colors.white),
+                    controller: newpasswordController,
+                    decoration: InputDecoration(
+                      hintText: "Enter your Password",
+                      labelText: "Passoword",
+                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                      border: InputBorder.none,
+                      icon: Icon(
+                        Icons.lock,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 RaisedButton(
                   color: Colors.lightBlueAccent,
