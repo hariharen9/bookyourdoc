@@ -1,12 +1,153 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'authentication_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
 
-class Booking extends StatelessWidget {
+class Booking extends StatefulWidget {
   const Booking({Key key}) : super(key: key);
 
   @override
+  _BookingState createState() => _BookingState();
+}
+
+class _BookingState extends State<Booking> {
+  @override
   Widget build(BuildContext context) {
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    final TextEditingController date = TextEditingController();
+    final TextEditingController details = TextEditingController();
+    final TextEditingController time = TextEditingController();
+    final TextEditingController dept = TextEditingController();
+
+    void _book() async {
+      try {
+        await firestore.collection("patients").doc().set({
+          "details": details.text,
+          "date": date.text,
+          "time": time.text,
+          "department": dept.text,
+        });
+      } catch (e) {
+        print(e);
+      }
+    }
+
     return Container(
-      child: Text('booking'),
+      child: Scaffold(
+        backgroundColor: Colors.blue[100],
+        appBar: AppBar(
+          backgroundColor: Colors.white70,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Booking',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.black54),
+              ),
+              Text(
+                'BookYourDoc',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.black54),
+              ),
+            ],
+          ),
+        ),
+        body: SafeArea(
+          child: Container(
+            constraints: BoxConstraints.expand(),
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/white.jpg'),
+                    fit: BoxFit.cover)),
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 450,
+                      child: TextField(
+                        style: TextStyle(color: Colors.black87),
+                        controller: details,
+                        decoration: InputDecoration(
+                          hintText: "Details",
+                          labelText: "Enter your NAME & AGE",
+                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 100,
+                      width: 450,
+                      child: TextField(
+                        style: TextStyle(color: Colors.black87),
+                        controller: date,
+                        decoration: InputDecoration(
+                          hintText: "DATE",
+                          labelText: "Enter your desired date (DD:MM:YYYY)",
+                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 100,
+                      width: 450,
+                      child: TextField(
+                        style: TextStyle(color: Colors.black87),
+                        controller: time,
+                        decoration: InputDecoration(
+                          hintText: "Time",
+                          labelText: "Enter your desired time (HH:MM)",
+                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 100,
+                      width: 450,
+                      child: TextField(
+                        style: TextStyle(color: Colors.black87),
+                        controller: dept,
+                        decoration: InputDecoration(
+                          hintText: "DOCTOR",
+                          labelText: "Enter your desired Doctor (Department)",
+                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    ElevatedButton(
+                      onPressed: _book,
+                      child: Text(
+                        "BookMyDOC NOW!",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 100,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        context.read<AuthenticationService>().signOut();
+                      },
+                      child: Text("Sign OUT"),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
