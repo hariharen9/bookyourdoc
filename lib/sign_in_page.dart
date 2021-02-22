@@ -40,7 +40,9 @@ class _SignInPageState extends State<SignInPage> {
         title: Text(
           'BookYourDoc',
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.black54),
+          style: GoogleFonts.montserrat(
+            textStyle: TextStyle(color: Colors.black54),
+          ),
         ),
       ),
       body: SafeArea(
@@ -54,164 +56,175 @@ class _SignInPageState extends State<SignInPage> {
           //   filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'BookYourDoc',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.blueGrey[600],
-                    fontSize: 32,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-                Text(
-                  'Enter your email and password below to continue to the BookYourDoc App',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                      color: Color(0x99eeeeee),
-                      border: Border.all(color: Colors.blue)),
-                  child: TextField(
-                    style: TextStyle(color: Colors.black87),
-                    controller: emailController,
-                    decoration: InputDecoration(
-                      hintText: "Enter your Email",
-                      labelText: "Email",
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                      border: InputBorder.none,
-                      icon: Icon(
-                        Icons.lock,
-                        color: Colors.black,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'BookYourDoc',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.montserrat(
+                      textStyle: TextStyle(
+                        color: Colors.blueGrey[600],
+                        fontSize: 32,
+                        fontWeight: FontWeight.w300,
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                      color: Color(0x99eeeeee),
-                      border: Border.all(color: Colors.blue)),
-                  child: TextField(
-                    style: TextStyle(color: Colors.black87),
-                    controller: passwordController,
-                    decoration: InputDecoration(
-                      hintText: "Enter your Password",
-                      labelText: "Password",
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                      border: InputBorder.none,
-                      icon: Icon(
-                        Icons.lock,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                RaisedButton(
-                  color: Colors.lightBlueAccent,
-                  onPressed: () {
-                    context.read<AuthenticationService>().signIn(
-                          email: emailController.text.trim(),
-                          password: passwordController.text.trim(),
-                        );
-                  },
-                  child: Text(
-                    "Sign IN",
+                  Text(
+                    'Enter your email and password below to continue to the BookYourDoc App',
+                    textAlign: TextAlign.left,
                     style: TextStyle(
-                      fontSize: 17,
+                      fontSize: 18,
                       fontWeight: FontWeight.w900,
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 55,
-                ),
-                Text(
-                  "If you are new to BookYourDoc, Please \nSIGN UP first.",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w900,
+                  SizedBox(
+                    height: 15,
                   ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                      color: Color(0x99eeeeee),
-                      border: Border.all(color: Colors.blue)),
-                  child: TextField(
-                    style: TextStyle(color: Colors.black87),
-                    controller: newemailController,
-                    decoration: InputDecoration(
-                      hintText: "Enter your Email",
-                      labelText: "Email",
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                      border: InputBorder.none,
-                      icon: Icon(
-                        Icons.lock,
-                        color: Colors.black,
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                        color: Color(0x99eeeeee),
+                        border: Border.all(color: Colors.blue)),
+                    child: TextField(
+                      style: TextStyle(color: Colors.black87),
+                      controller: emailController,
+                      decoration: InputDecoration(
+                        hintText: "Enter your Email",
+                        labelText: "Email",
+                        contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                        border: InputBorder.none,
+                        icon: Icon(
+                          Icons.email_rounded,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                      color: Color(0x99eeeeee),
-                      border: Border.all(color: Colors.blue)),
-                  child: TextField(
-                    style: TextStyle(color: Colors.black87),
-                    controller: newpasswordController,
-                    decoration: InputDecoration(
-                      hintText: "Enter your Password",
-                      labelText: "Passoword",
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                      border: InputBorder.none,
-                      icon: Icon(
-                        Icons.lock,
-                        color: Colors.black,
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                        color: Color(0x99eeeeee),
+                        border: Border.all(color: Colors.blue)),
+                    child: TextField(
+                      style: TextStyle(color: Colors.black87),
+                      controller: passwordController,
+                      decoration: InputDecoration(
+                        hintText: "Enter your Password",
+                        labelText: "Password",
+                        contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                        border: InputBorder.none,
+                        icon: Icon(
+                          Icons.lock,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                RaisedButton(
-                  color: Colors.lightBlueAccent,
-                  onPressed: _createEmailAccount,
-                  child: Text(
-                    "Sign UP",
+                  SizedBox(
+                    height: 20,
+                  ),
+                  RaisedButton(
+                    color: Colors.lightBlueAccent,
+                    onPressed: () {
+                      context.read<AuthenticationService>().signIn(
+                            email: emailController.text.trim(),
+                            password: passwordController.text.trim(),
+                          );
+                    },
+                    child: Text(
+                      "Sign IN",
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Divider(
+                    color: Colors.blue[200],
+                    thickness: 2,
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    "If you are new to BookYourDoc, Please \nSIGN UP first.",
+                    textAlign: TextAlign.left,
                     style: TextStyle(
-                      fontSize: 17,
+                      fontSize: 18,
                       fontWeight: FontWeight.w900,
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                        color: Color(0x99eeeeee),
+                        border: Border.all(color: Colors.blue)),
+                    child: TextField(
+                      style: TextStyle(color: Colors.black87),
+                      controller: newemailController,
+                      decoration: InputDecoration(
+                        hintText: "Enter your Email",
+                        labelText: "Email",
+                        contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                        border: InputBorder.none,
+                        icon: Icon(
+                          Icons.email_rounded,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                        color: Color(0x99eeeeee),
+                        border: Border.all(color: Colors.blue)),
+                    child: TextField(
+                      style: TextStyle(color: Colors.black87),
+                      controller: newpasswordController,
+                      decoration: InputDecoration(
+                        hintText: "Enter your Password",
+                        labelText: "Password",
+                        contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                        border: InputBorder.none,
+                        icon: Icon(
+                          Icons.lock,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  RaisedButton(
+                    color: Colors.lightBlueAccent,
+                    onPressed: _createEmailAccount,
+                    child: Text(
+                      "Sign UP",
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

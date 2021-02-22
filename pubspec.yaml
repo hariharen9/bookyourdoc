@@ -11,15 +11,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cloud_firestore: 
+  cloud_firestore: null
   cupertino_icons: ^0.1.3
   firebase_auth: ^0.20.0+1
   firebase_core: ^0.7.0
+  font_awesome_flutter: ^8.11.0
   google_fonts: ^1.1.0
   provider: ^4.3.2+1
+  shared_preferences: ^0.5.12+4
   stacked_firebase_auth: ^0.1.0+1
-  font_awesome_flutter: ^8.11.0
-
+  after_layout: ^1.0.7+2
 
 dev_dependencies:
   flutter_test:
