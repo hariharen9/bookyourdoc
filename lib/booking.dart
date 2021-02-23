@@ -16,6 +16,7 @@ class Booking extends StatefulWidget {
 }
 
 class _BookingState extends State<Booking> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -35,164 +36,171 @@ class _BookingState extends State<Booking> {
           "department": dept.text,
           "problem": problems.text,
         });
+        print('snackbar');
+        final snackBar = new SnackBar(
+          content: Text('Your appointment has been Booked! THANK YOU'),
+          duration: Duration(seconds: 3),
+          backgroundColor: Colors.green,
+          action: SnackBarAction(
+            label: 'You Are Welcome',
+            onPressed: () {
+              print('WELCOMED');
+            },
+          ),
+        );
+        _scaffoldKey.currentState.showSnackBar(snackBar);
       } catch (e) {
         print(e);
       }
     }
 
-    return Container(
-      child: Scaffold(
-        resizeToAvoidBottomInset: true,
-        backgroundColor: Colors.blue[100],
-        appBar: AppBar(
-          backgroundColor: Colors.white70,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Booking',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.black54),
-              ),
-              Text(
-                'BookYourDoc',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.black26),
-              ),
-            ],
-          ),
+    return Scaffold(
+      key: _scaffoldKey,
+      resizeToAvoidBottomInset: true,
+      backgroundColor: Colors.blue[100],
+      appBar: AppBar(
+        backgroundColor: Colors.white70,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Booking',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.black54),
+            ),
+            Text(
+              'BookYourDoc',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.black26),
+            ),
+          ],
         ),
-        body: SafeArea(
-          child: Container(
-            constraints: BoxConstraints.expand(),
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/white.jpg'),
-                    fit: BoxFit.cover)),
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Text(
-                        'Please Enter the requested details below in the CORRECT FORM :',
-                        textAlign: TextAlign.left,
+      ),
+      body: SafeArea(
+        child: Container(
+          constraints: BoxConstraints.expand(),
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/white.jpg'),
+                  fit: BoxFit.cover)),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Text(
+                      'Please Enter the requested details below in the CORRECT FORM :',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Container(
+                      height: 100,
+                      width: 450,
+                      child: TextField(
+                        style: TextStyle(color: Colors.black87),
+                        controller: details,
+                        decoration: InputDecoration(
+                          hintText: "Details",
+                          labelText: "Enter your NAME & AGE",
+                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 100,
+                      width: 450,
+                      child: TextField(
+                        style: TextStyle(color: Colors.black87),
+                        controller: date,
+                        decoration: InputDecoration(
+                          hintText: "DATE",
+                          labelText: "Enter your desired date (DD:MM:YYYY)",
+                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 100,
+                      width: 450,
+                      child: TextField(
+                        style: TextStyle(color: Colors.black87),
+                        controller: time,
+                        decoration: InputDecoration(
+                          hintText: "Time",
+                          labelText: "Enter your desired time (HH:MM)",
+                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 100,
+                      width: 450,
+                      child: TextField(
+                        style: TextStyle(color: Colors.black87),
+                        controller: dept,
+                        decoration: InputDecoration(
+                          hintText: "DOCTOR",
+                          labelText: "Enter your desired Doctor (Department)",
+                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 100,
+                      width: 450,
+                      child: TextField(
+                        style: TextStyle(color: Colors.black87),
+                        controller: problems,
+                        decoration: InputDecoration(
+                          hintText: "Enter your Comments",
+                          labelText:
+                              "What are the problems you are facing? please SHARE IT WITH US",
+                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                      onPressed: _book,
+                      child: Text(
+                        "BookMyDOC NOW!",
                         style: TextStyle(
-                            fontSize: 14,
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Container(
-                        height: 100,
-                        width: 450,
-                        child: TextField(
-                          style: TextStyle(color: Colors.black87),
-                          controller: details,
-                          decoration: InputDecoration(
-                            hintText: "Details",
-                            labelText: "Enter your NAME & AGE",
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                          ),
+                          fontSize: 20,
+                          color: Colors.white,
                         ),
                       ),
-                      Container(
-                        height: 100,
-                        width: 450,
-                        child: TextField(
-                          style: TextStyle(color: Colors.black87),
-                          controller: date,
-                          decoration: InputDecoration(
-                            hintText: "DATE",
-                            labelText: "Enter your desired date (DD:MM:YYYY)",
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
+                    ),
+                    Container(
+                      child: IconButton(
+                          icon: FaIcon(FontAwesomeIcons.angleDown),
+                          onPressed: () {
+                            print("Pressed");
+                          }),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        context.read<AuthenticationService>().signOut();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return SignInPage();
+                            },
                           ),
-                        ),
-                      ),
-                      Container(
-                        height: 100,
-                        width: 450,
-                        child: TextField(
-                          style: TextStyle(color: Colors.black87),
-                          controller: time,
-                          decoration: InputDecoration(
-                            hintText: "Time",
-                            labelText: "Enter your desired time (HH:MM)",
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: 100,
-                        width: 450,
-                        child: TextField(
-                          style: TextStyle(color: Colors.black87),
-                          controller: dept,
-                          decoration: InputDecoration(
-                            hintText: "DOCTOR",
-                            labelText: "Enter your desired Doctor (Department)",
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: 100,
-                        width: 450,
-                        child: TextField(
-                          style: TextStyle(color: Colors.black87),
-                          controller: problems,
-                          decoration: InputDecoration(
-                            hintText: "Enter your Comments",
-                            labelText:
-                                "What are the problems you are facing? please SHARE IT WITH US",
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      ElevatedButton(
-                        onPressed: _book,
-                        child: Text(
-                          "BookMyDOC NOW!",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        child: IconButton(
-                            icon: FaIcon(FontAwesomeIcons.angleDown),
-                            onPressed: () {
-                              print("Pressed");
-                            }),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          context.read<AuthenticationService>().signOut();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return SignInPage();
-                              },
-                            ),
-                          );
-                        },
-                        child: Text("Sign OUT"),
-                      )
-                    ],
-                  ),
+                        );
+                      },
+                      child: Text("Sign OUT"),
+                    )
+                  ],
                 ),
               ),
             ),
