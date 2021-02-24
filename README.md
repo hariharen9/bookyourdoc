@@ -1,6 +1,6 @@
-# bookyourdoc
+# BookYourDoc
 
-A new Flutter project.
+A new Flutter project. To book Doctors Appoinment
 
 ## Getting Started
 
